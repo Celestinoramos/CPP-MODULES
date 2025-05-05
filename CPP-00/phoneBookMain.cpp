@@ -13,13 +13,15 @@
 #include "PhoneBook.hpp"
 #include <iostream>
 #include <csignal>
+#include <cstdlib>
 
 void	signal_hand(int signal)
 {
+	(void)signal;
 	std::exit(0);
 }
 
-int	main(int argc, char **argv)
+int	main()
 {
 	PhoneBook phoneBook;
 	std::string comando;
@@ -45,8 +47,10 @@ int	main(int argc, char **argv)
 			break;
 		}
 		else
+		{
 			std::cout << "*!!Comando invalido!!*" << std::endl;
 			std::cout << "Os camandos sao \"ADD, SEARCH e EXIT \" " << std::endl;
+		}
 	}
 	return (0);
 }

@@ -35,34 +35,36 @@ void	Contact::setContact()
 	do {
 		std::cout << "The Nickname: " << std::endl;
 		std::getline(std::cin, nickname);
-		if (nickname.empty());
+		if (nickname.empty())
+			std::cout << "!!ERROR!! Campo obrigatorio. \n";
 	} while (nickname.empty());
 	
 	while (true)
-	{
-		std::cout << "The Phone Number: " << std::endl;
-		std::getline(std::cin, phoneNumber);
-		
-		bool	valid = true;
-		
-		for (char c : phoneNumber)
-		{
-			if (!std::isdigit(c))
-			{
-				valid = false;
-				break;
-			}
-		}
-		if (valid && !phoneNumber.empty())
-			break;
-		else
-			std::cout << "!!ERROR!! apenas números são validos. \n";
-	}
-	
+{
+    std::cout << "The Phone Number: " << std::endl;
+    std::getline(std::cin, phoneNumber);
+
+    bool valid = true;
+
+    for (size_t i = 0; i < phoneNumber.size(); ++i)
+    {
+        if (!std::isdigit(phoneNumber[i]))
+        {
+            valid = false;
+            break;
+        }
+    }
+    if (valid && !phoneNumber.empty())
+        break;
+    else
+        std::cout << "!!ERROR!! apenas números são validos. \n";
+}
+
 	do {
 		std::cout << "Your Darkest Secret: " << std::endl;
 		std::getline(std::cin, darkestSecret);
-		if (darkestSecret.empty());
+		if (darkestSecret.empty())
+			std::cout << "!!ERROR!! Campo obrigatorio. \n";
 	} while (darkestSecret.empty());
 }
 

@@ -13,6 +13,7 @@
 #include "PhoneBook.hpp"
 #include <iostream>
 #include <iomanip>
+#include <cstdlib> 
 
 PhoneBook::PhoneBook() : conctCount(0), nextIndex(0) {}
 
@@ -42,18 +43,19 @@ void PhoneBook::searchContacts() const
 			return;
 
 		bool valid = true;
-		for (char c : input)
+		for (size_t i = 0; i < input.size(); ++i)
 		{
+			char c = input[i];
 			if (!std::isdigit(c))
 			{
 				valid = false;
 				break;
 			}
 		}
-
+	
 		if (valid && !input.empty())
 		{
-			int index = std::stoi(input);
+			int index = std::atoi(input.c_str());
 			if (index >= 0 && index < conctCount)
 			{
 				contacts[index].displayFullList();
